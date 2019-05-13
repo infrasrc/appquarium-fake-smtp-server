@@ -151,4 +151,4 @@ app.listen(config['http-port'], config['http-ip'], () => {
   cli.info("HTTP server listening on http://" + config['http-ip'] +  ":" + config['http-port']);
 });
 
-cli.info("SMTP server listening on " + config['smtp-ip'] + ":" + config['smtp-port']);
+cli.info("SMTP server listening on " + config['smtp-port']);
