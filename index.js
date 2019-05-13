@@ -9,9 +9,8 @@ const moment = require("moment");
 const cli = require('cli').enable('catchall').enable('status');
 
 const config = cli.parse({
-  'smtp-port': ['s', 'SMTP port to listen on', 'number', 1025],
-  'smtp-ip': [false, 'IP Address to bind SMTP service to', 'ip', '0.0.0.0'],
-  'http-port': ['h', 'HTTP port to listen on', 'number', 1080],
+  'smtp-port': ['s', 'SMTP port to listen on', 'number', 2525],
+  'http-port': ['h', 'HTTP port to listen on', 'number', 2080],
   'http-ip': [false, 'IP Address to bind HTTP service to', 'ip', '0.0.0.0'],
   whitelist: ['w', 'Only accept e-mails from these adresses. Accepts multiple e-mails comma-separated', 'string'],
   max: ['m', 'Max number of e-mails to keep', 'number', 100],
@@ -36,6 +35,8 @@ const mails = [];
 
 const server = new SMTPServer({
   authOptional: true,
+  secure: false,
+  hideSTARTTLS: true,
   maxAllowedUnauthenticatedCommands: 1000,
   onMailFrom(address, session, cb) {
     if (whitelist.length == 0 || whitelist.indexOf(address.address) !== -1) {
@@ -92,7 +93,7 @@ server.on('error', err => {
   cli.error(err);
 });
 
-server.listen(config['smtp-port'], config['smtp-ip']);
+server.listen(config['smtp-port']);
 
 const app = express();
 

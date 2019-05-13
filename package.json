@@ -36,7 +36,8 @@
     "lodash": "4.17.11",
     "mailparser": "2.4.3",
     "moment": "2.24.0",
-    "smtp-server": "3.5.0"
+    "smtp-server": "3.5.0",
+    "supports-color": "6.0.0"
   },
   "devDependencies": {
     "react": "16.8.3",

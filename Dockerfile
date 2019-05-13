@@ -4,7 +4,7 @@ COPY . /www
 
 WORKDIR /www
 
-RUN npm i && npm run build
+RUN npm i --production
 
 EXPOSE 1025
 EXPOSE 1080
